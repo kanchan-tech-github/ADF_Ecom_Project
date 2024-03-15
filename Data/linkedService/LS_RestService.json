@@ -1,0 +1,13 @@
+{
+	"name": "LS_RestService",
+	"properties": {
+		"description": "LS_RestService , this is the linked service used for Rest API Input",
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://retoolapi.dev/STkIEh/data",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
