@@ -1,0 +1,31 @@
+{
+	"name": "DS_Dynamic_SqlServerTable",
+	"properties": {
+		"description": "DS_Dynamic_SqlServerTable, This data set used for dynamically copy SqlServer Table data",
+		"linkedServiceName": {
+			"referenceName": "LS_SqlServerTable",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"schema": {
+				"type": "string"
+			},
+			"table": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().table",
+				"type": "Expression"
+			}
+		}
+	}
+}

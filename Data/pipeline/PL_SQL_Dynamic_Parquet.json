@@ -1,0 +1,93 @@
+{
+	"name": "PL_SQL_Dynamic_Parquet",
+	"properties": {
+		"description": "This pipeline used to copy multiple SQL table from on premises SQL Server and to store it in Staging ADLS in parquet format.",
+		"activities": [
+			{
+				"name": "GetSQLTableList",
+				"description": "Lookup activity used to look into source.",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT  TABLE_SCHEMA, TABLE_NAME FROM information_schema.TABLES WHERE   TABLE_TYPE = 'BASE TABLE' and TABLE_SCHEMA ='dbo'",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_SqlServerTable",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach_tableItem",
+				"description": "For each activity is used to get output value from lookup activity",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "GetSQLTableList",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('GetSQLTableList').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy Multiple SQL table to ADLS",
+							"description": "Copy Multiple SQL table from on premises data to parquet Dynamically.",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_Dynamic_SqlServerTable",
+									"type": "DatasetReference",
+									"parameters": {
+										"schema": {
+											"value": "@item().TABLE_SCHEMA",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"annotations": []
+	}
+}
