@@ -2,7 +2,7 @@
 	"name": "DS_dynamicSQL_Parquet",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_for_all_Parquet",
+			"referenceName": "LS_DynamicSQL_Table",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
@@ -19,8 +19,7 @@
 					"value": "@dataset().filename",
 					"type": "Expression"
 				},
-				"folderPath": "MultipleSQLTable",
-				"fileSystem": "DynamicSQLTable"
+				"fileSystem": "order"
 			},
 			"compressionCodec": "snappy"
 		},
