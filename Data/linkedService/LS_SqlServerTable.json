@@ -1,0 +1,17 @@
+{
+	"name": "LS_SqlServerTable",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "LS_SqlServerTable, this is the linked service used for on premise SQL Server",
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=KANCHAN-PC\\SQLEXPRESS;initial catalog=\"Ecom Project DB\";user id=sa",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIzNjVhZjg3ZC05YWI2LTRmNzYtODA5YS04MTBmNWIzOGQ0MTEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
