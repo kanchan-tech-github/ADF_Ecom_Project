@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "DataFact-Ecom-Project"
 		},
+		"LS_SqlServerTable_connectionString": {
+			"value": ""
+		},
 		"LS_for_all_Parquet_accountKey": {
 			"value": ""
 		},
