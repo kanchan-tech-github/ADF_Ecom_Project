@@ -7,7 +7,7 @@
 		"type": "SqlServer",
 		"typeProperties": {
 			"connectionString": "integrated security=False;data source=KANCHAN-PC\\SQLEXPRESS;initial catalog=\"Ecom Project DB\";user id=sa",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4MmRlNzk5Yi03ZDVmLTRiZTktOGE0ZS1kNDZmM2JlNmJlMzAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIxZDJiMGQ5ZC1iNDVjLTQ4OWYtYWM3Ni1iM2E2NjRmN2IxZWMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntime1",
