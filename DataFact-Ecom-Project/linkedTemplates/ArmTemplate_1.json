@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "DataFact-Ecom-Project"
 		},
+		"Event_Trigger_ADLS_properties_PL_ADLS_Parquet_parameters_PLFileName": {
+			"type": "string",
+			"defaultValue": "@{concat(split(@triggerBody().folderPath,'.')[0],'.parquet')}"
+		},
 		"Event_Trigger_ADLS_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/adls0raw0ecom"
@@ -94,14 +98,16 @@
 			"properties": {
 				"description": "Event_Trigger , for ADLS.  we are using storage event trigger here ie. when new file came in storage account then trigger start pipeline.",
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
 							"referenceName": "PL_ADLS_Parquet",
 							"type": "PipelineReference"
 						},
-						"parameters": {}
+						"parameters": {
+							"PLFileName": "[parameters('Event_Trigger_ADLS_properties_PL_ADLS_Parquet_parameters_PLFileName')]"
+						}
 					}
 				],
 				"type": "BlobEventsTrigger",
