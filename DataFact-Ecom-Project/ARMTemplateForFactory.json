@@ -945,7 +945,7 @@
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
 					"blobPathBeginsWith": "/product/blobs/",
-					"ignoreEmptyBlobs": false,
+					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('Event_Trigger_Blob_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
