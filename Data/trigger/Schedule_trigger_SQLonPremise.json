@@ -1,0 +1,25 @@
+{
+	"name": "Schedule_trigger_SQLonPremise",
+	"properties": {
+		"description": "Schedule_trigger_SQLonPremise, for SQL on-Premise resource. It will execute pipeline once in a day.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_SQL_Dynamic_Parquet",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2024-03-16T13:58:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
