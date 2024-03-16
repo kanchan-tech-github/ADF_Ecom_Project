@@ -912,11 +912,18 @@
 			"properties": {
 				"description": "Event_Trigger , for ADLS.  we are using storage event trigger here ie. when new file came in storage account then trigger start pipeline.",
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
 							"referenceName": "PL_Blob_Parquet",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					},
+					{
+						"pipelineReference": {
+							"referenceName": "PL_ADLS_Parquet",
 							"type": "PipelineReference"
 						},
 						"parameters": {}
@@ -933,7 +940,8 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/PL_Blob_Parquet')]"
+				"[concat(variables('factoryId'), '/pipelines/PL_Blob_Parquet')]",
+				"[concat(variables('factoryId'), '/pipelines/PL_ADLS_Parquet')]"
 			]
 		},
 		{
@@ -943,7 +951,7 @@
 			"properties": {
 				"description": "Event_Trigger , for Blob.  we are using storage event trigger here ie. when new file came in storage account then trigger start pipeline.",
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -1014,6 +1022,13 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {}
+					},
+					{
+						"pipelineReference": {
+							"referenceName": "PL_SQL_Parquet",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
 					}
 				],
 				"type": "ScheduleTrigger",
@@ -1028,7 +1043,8 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/PL_SQL_Dynamic_Parquet')]"
+				"[concat(variables('factoryId'), '/pipelines/PL_SQL_Dynamic_Parquet')]",
+				"[concat(variables('factoryId'), '/pipelines/PL_SQL_Parquet')]"
 			]
 		}
 	]
