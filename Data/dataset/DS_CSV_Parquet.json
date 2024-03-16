@@ -1,0 +1,19 @@
+{
+	"name": "DS_CSV_Parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_for_all_Parquet",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "payment"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
