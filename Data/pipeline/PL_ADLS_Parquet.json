@@ -55,11 +55,22 @@
 				"outputs": [
 					{
 						"referenceName": "DS_CSV_Parquet",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Filename": {
+								"value": "@pipeline().parameters.PLFilename",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"parameters": {
+			"PLFilename": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
