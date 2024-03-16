@@ -34,6 +34,10 @@
 		"LS_CSV_Resource_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adls0raw0ecom.dfs.core.windows.net/"
+		},
+		"Event_Trigger_ADLS_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/adls0raw0ecom"
 		}
 	},
 	"variables": {
@@ -895,6 +899,37 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_for_all_Parquet')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Event_Trigger_ADLS')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Event_Trigger , for ADLS.  we are using storage event trigger here ie. when new file came in storage account then trigger start pipeline.",
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "PL_Blob_Parquet",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/payment/blobs/",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('Event_Trigger_ADLS_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_Blob_Parquet')]"
 			]
 		}
 	]
