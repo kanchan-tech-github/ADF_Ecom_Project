@@ -4,7 +4,14 @@
 		"description": "Event_Trigger , for Blob.  we are using storage event trigger here ie. when new file came in storage account then trigger start pipeline.",
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [],
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_Blob_Parquet",
+					"type": "PipelineReference"
+				}
+			}
+		],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/product/blobs/",
