@@ -998,6 +998,38 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/PL_Rest_Parquet')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Schedule_trigger_SQLonPremise')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Schedule_trigger_SQLonPremise, for SQL on-Premise resource. It will execute pipeline once in a day.",
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "PL_SQL_Dynamic_Parquet",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2024-03-16T13:58:00",
+						"timeZone": "India Standard Time",
+						"schedule": {}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_SQL_Dynamic_Parquet')]"
+			]
 		}
 	]
 }
