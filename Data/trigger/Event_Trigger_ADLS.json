@@ -1,0 +1,25 @@
+{
+	"name": "Event_Trigger_ADLS",
+	"properties": {
+		"description": "Event_Trigger , for ADLS.  we are using storage event trigger here ie. when new file came in storage account then trigger start pipeline.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_Blob_Parquet",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/payment/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/adls0raw0ecom",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
