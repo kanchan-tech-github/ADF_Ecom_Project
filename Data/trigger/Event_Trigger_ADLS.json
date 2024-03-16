@@ -7,8 +7,17 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
+					"referenceName": "PL_Blob_Parquet",
+					"type": "PipelineReference"
+				}
+			},
+			{
+				"pipelineReference": {
 					"referenceName": "PL_ADLS_Parquet",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"PLFilename": "@triggerBody().fileName"
 				}
 			}
 		],
