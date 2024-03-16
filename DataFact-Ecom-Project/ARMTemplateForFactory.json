@@ -38,6 +38,10 @@
 		"Event_Trigger_ADLS_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/adls0raw0ecom"
+		},
+		"Event_Trigger_Blob_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/blob0raw0ecom"
 		}
 	},
 	"variables": {
@@ -930,6 +934,69 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/PL_Blob_Parquet')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Event_Trigger_Blob')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Event_Trigger , for Blob.  we are using storage event trigger here ie. when new file came in storage account then trigger start pipeline.",
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "PL_Blob_Parquet",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/product/blobs/",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('Event_Trigger_Blob_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_Blob_Parquet')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Schedule_trigger_Rest')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Schedule_trigger_Rest, for Rest resource. It will execute pipeline once in a day.",
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "PL_Rest_Parquet",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2024-03-16T13:40:00",
+						"timeZone": "India Standard Time",
+						"schedule": {}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_Rest_Parquet')]"
 			]
 		}
 	]
