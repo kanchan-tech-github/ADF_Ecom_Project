@@ -15,6 +15,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_for_all_Parquet'"
 		},
+		"LS_CSV_Resource_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_CSV_Resource'"
+		},
+		"LS_BlobCsv_Resource_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_BlobCsv_Resource'"
+		},
 		"LS_RestService_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://retoolapi.dev/STkIEh/data"
@@ -22,6 +30,10 @@
 		"LS_for_all_Parquet_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adls0staging0ecom.dfs.core.windows.net/"
+		},
+		"LS_CSV_Resource_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adls0raw0ecom.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -53,6 +65,12 @@
 					"LS_for_all_Parquet_accountKey": {
 						"value": "[parameters('LS_for_all_Parquet_accountKey')]"
 					},
+					"LS_CSV_Resource_accountKey": {
+						"value": "[parameters('LS_CSV_Resource_accountKey')]"
+					},
+					"LS_BlobCsv_Resource_connectionString": {
+						"value": "[parameters('LS_BlobCsv_Resource_connectionString')]"
+					},
 					"LS_SqlServerTable_connectionString": {
 						"value": "[parameters('LS_SqlServerTable_connectionString')]"
 					},
@@ -61,10 +79,33 @@
 					},
 					"LS_for_all_Parquet_properties_typeProperties_url": {
 						"value": "[parameters('LS_for_all_Parquet_properties_typeProperties_url')]"
+					},
+					"LS_CSV_Resource_properties_typeProperties_url": {
+						"value": "[parameters('LS_CSV_Resource_properties_typeProperties_url')]"
 					}
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "DataFact-Ecom-Project_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DataFact-Ecom-Project_ArmTemplate_0')]"
+			]
 		}
 	]
 }

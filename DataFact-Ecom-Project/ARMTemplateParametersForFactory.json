@@ -11,11 +11,20 @@
 		"LS_for_all_Parquet_accountKey": {
 			"value": ""
 		},
+		"LS_CSV_Resource_accountKey": {
+			"value": ""
+		},
+		"LS_BlobCsv_Resource_connectionString": {
+			"value": ""
+		},
 		"LS_RestService_properties_typeProperties_url": {
 			"value": "https://retoolapi.dev/STkIEh/data"
 		},
 		"LS_for_all_Parquet_properties_typeProperties_url": {
 			"value": "https://adls0staging0ecom.dfs.core.windows.net/"
+		},
+		"LS_CSV_Resource_properties_typeProperties_url": {
+			"value": "https://adls0raw0ecom.dfs.core.windows.net/"
 		}
 	}
 }
