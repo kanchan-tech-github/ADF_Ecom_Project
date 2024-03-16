@@ -5,17 +5,20 @@
 		"factoryName": {
 			"value": "DataFact-Ecom-Project"
 		},
+		"LS_BlobCsv_Resource_connectionString": {
+			"value": ""
+		},
+		"LS_CSV_Resource_accountKey": {
+			"value": ""
+		},
 		"LS_SqlServerTable_connectionString": {
 			"value": ""
 		},
 		"LS_for_all_Parquet_accountKey": {
 			"value": ""
 		},
-		"LS_CSV_Resource_accountKey": {
-			"value": ""
-		},
-		"LS_BlobCsv_Resource_connectionString": {
-			"value": ""
+		"LS_CSV_Resource_properties_typeProperties_url": {
+			"value": "https://adls0raw0ecom.dfs.core.windows.net/"
 		},
 		"LS_RestService_properties_typeProperties_url": {
 			"value": "https://retoolapi.dev/STkIEh/data"
@@ -23,16 +26,10 @@
 		"LS_for_all_Parquet_properties_typeProperties_url": {
 			"value": "https://adls0staging0ecom.dfs.core.windows.net/"
 		},
-		"LS_CSV_Resource_properties_typeProperties_url": {
-			"value": "https://adls0raw0ecom.dfs.core.windows.net/"
-		},
 		"Event_Trigger_ADLS_properties_typeProperties_scope": {
 			"value": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/adls0raw0ecom"
 		},
 		"Event_Trigger_Blob_properties_typeProperties_scope": {
-			"value": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/blob0raw0ecom"
-		},
-		"Blob_Event_trigger_properties_typeProperties_scope": {
 			"value": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/blob0raw0ecom"
 		}
 	}
