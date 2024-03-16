@@ -203,11 +203,20 @@
 					"referenceName": "LS_for_all_Parquet",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"Filename": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "Parquet",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().Filename",
+							"type": "Expression"
+						},
 						"fileSystem": "payment"
 					},
 					"compressionCodec": "snappy"
@@ -448,13 +457,23 @@
 							{
 								"referenceName": "DS_CSV_Parquet",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"Filename": {
+										"value": "@pipeline().parameters.PLFilename",
+										"type": "Expression"
+									}
+								}
 							}
 						]
 					}
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"PLFilename": {
+						"type": "string"
+					}
 				},
 				"annotations": []
 			},

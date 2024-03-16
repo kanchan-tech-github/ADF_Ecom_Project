@@ -35,6 +35,10 @@
 			"type": "string",
 			"defaultValue": "https://adls0staging0ecom.dfs.core.windows.net/"
 		},
+		"Event_Trigger_ADLS_properties_PL_ADLS_Parquet_parameters_PLFilename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
 		"Event_Trigger_ADLS_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/adls0raw0ecom"
@@ -108,6 +112,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"Event_Trigger_ADLS_properties_PL_ADLS_Parquet_parameters_PLFilename": {
+						"value": "[parameters('Event_Trigger_ADLS_properties_PL_ADLS_Parquet_parameters_PLFilename')]"
 					},
 					"Event_Trigger_ADLS_properties_typeProperties_scope": {
 						"value": "[parameters('Event_Trigger_ADLS_properties_typeProperties_scope')]"

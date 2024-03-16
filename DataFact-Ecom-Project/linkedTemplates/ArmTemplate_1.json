@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "DataFact-Ecom-Project"
 		},
+		"Event_Trigger_ADLS_properties_PL_ADLS_Parquet_parameters_PLFilename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
 		"Event_Trigger_ADLS_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/adls0raw0ecom"
@@ -108,7 +112,9 @@
 							"referenceName": "PL_ADLS_Parquet",
 							"type": "PipelineReference"
 						},
-						"parameters": {}
+						"parameters": {
+							"PLFilename": "[parameters('Event_Trigger_ADLS_properties_PL_ADLS_Parquet_parameters_PLFilename')]"
+						}
 					}
 				],
 				"type": "BlobEventsTrigger",

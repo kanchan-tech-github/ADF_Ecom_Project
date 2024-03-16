@@ -26,6 +26,9 @@
 		"LS_for_all_Parquet_properties_typeProperties_url": {
 			"value": "https://adls0staging0ecom.dfs.core.windows.net/"
 		},
+		"Event_Trigger_ADLS_properties_PL_ADLS_Parquet_parameters_PLFilename": {
+			"value": "@triggerBody().fileName"
+		},
 		"Event_Trigger_ADLS_properties_typeProperties_scope": {
 			"value": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/adls0raw0ecom"
 		},
