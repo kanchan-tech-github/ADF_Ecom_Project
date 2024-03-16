@@ -964,6 +964,7 @@
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
 					"blobPathBeginsWith": "/product/blobs/",
+					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('Event_Trigger_Blob_properties_typeProperties_scope')]",
 					"events": [
