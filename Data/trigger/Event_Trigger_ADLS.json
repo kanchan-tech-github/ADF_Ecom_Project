@@ -15,9 +15,6 @@
 				"pipelineReference": {
 					"referenceName": "PL_ADLS_Parquet",
 					"type": "PipelineReference"
-				},
-				"parameters": {
-					"PLFilename": "@triggerBody().fileName"
 				}
 			}
 		],
