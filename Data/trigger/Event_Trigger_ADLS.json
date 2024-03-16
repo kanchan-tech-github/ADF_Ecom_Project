@@ -3,7 +3,7 @@
 	"properties": {
 		"description": "Event_Trigger , for ADLS.  we are using storage event trigger here ie. when new file came in storage account then trigger start pipeline.",
 		"annotations": [],
-		"runtimeState": "Started",
+		"runtimeState": "Stopped",
 		"pipelines": [
 			{
 				"pipelineReference": {
@@ -11,7 +11,7 @@
 					"type": "PipelineReference"
 				},
 				"parameters": {
-					"PLFileName": "@{concat(split(@triggerBody().folderPath,'.')[0],'.parquet')}"
+					"PLFileName": "@concat(split(triggerBody().folderPath,'.')[0],'.parquet')"
 				}
 			}
 		],
