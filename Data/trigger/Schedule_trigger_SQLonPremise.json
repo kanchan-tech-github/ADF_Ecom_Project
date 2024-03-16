@@ -10,6 +10,12 @@
 					"referenceName": "PL_SQL_Dynamic_Parquet",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "PL_SQL_Parquet",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
