@@ -11,7 +11,7 @@
 					"type": "PipelineReference"
 				},
 				"parameters": {
-					"PLFileName": "@concat(split(triggerBody().folderPath,'.')[0],'.parquet')"
+					"PLFileName": "triggerBody().fileName"
 				}
 			}
 		],
