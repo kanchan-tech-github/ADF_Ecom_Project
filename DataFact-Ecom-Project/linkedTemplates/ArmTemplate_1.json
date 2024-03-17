@@ -98,7 +98,7 @@
 			"properties": {
 				"description": "Event_Trigger , for ADLS.  we are using storage event trigger here ie. when new file came in storage account then trigger start pipeline.",
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
