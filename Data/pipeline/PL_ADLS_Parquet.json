@@ -59,7 +59,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Filename": {
-								"value": "@pipeline().parameters.PLFileName",
+								"value": "@{split(pipeline().parameters.PLFileName,'.')[0]}",
 								"type": "Expression"
 							}
 						}
