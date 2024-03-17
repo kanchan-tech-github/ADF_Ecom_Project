@@ -132,11 +132,6 @@
 						"type": "string"
 					}
 				},
-				"variables": {
-					"Filenaming": {
-						"type": "String"
-					}
-				},
 				"annotations": []
 			},
 			"dependsOn": [
