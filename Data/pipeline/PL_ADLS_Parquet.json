@@ -59,7 +59,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Filename": {
-								"value": "variables('Filenaming')= string(split(pipeline().parameters.PLFileName,'.')[0]\n@{concat(variables('Filenaming'),'.parquet')}",
+								"value": "@{concat(substring(pipeline().parameters.PLFileName,0,lastIndexOf(pipeline().parameters.PLFileName,'.')),'.parquet')}",
 								"type": "Expression"
 							}
 						}
