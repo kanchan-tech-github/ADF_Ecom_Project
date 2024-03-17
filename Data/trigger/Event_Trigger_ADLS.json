@@ -11,7 +11,7 @@
 					"type": "PipelineReference"
 				},
 				"parameters": {
-					"PLFileName": "triggerBody().fileName"
+					"PLFileName": "string(split(@triggerBody().fileName,'.')[0])"
 				}
 			}
 		],
