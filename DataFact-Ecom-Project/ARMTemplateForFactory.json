@@ -37,7 +37,7 @@
 		},
 		"Event_Trigger_ADLS_properties_PL_ADLS_Parquet_parameters_PLFileName": {
 			"type": "string",
-			"defaultValue": "triggerBody().fileName"
+			"defaultValue": "string(split(@triggerBody().fileName,'.')[0])"
 		},
 		"Event_Trigger_ADLS_properties_typeProperties_scope": {
 			"type": "string",
@@ -116,7 +116,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"Filename": {
-										"value": "@{concat(string(split(pipeline().parameters.PLFileName,'.')[1]),'.parquet')}",
+										"value": "@concat(pipeline().parameters.PLFileName,'.parquet')",
 										"type": "Expression"
 									}
 								}

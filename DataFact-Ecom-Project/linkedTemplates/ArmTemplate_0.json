@@ -459,7 +459,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"Filename": {
-										"value": "@{concat(string(split(pipeline().parameters.PLFileName,'.')[1]),'.parquet')}",
+										"value": "@concat(pipeline().parameters.PLFileName,'.parquet')",
 										"type": "Expression"
 									}
 								}
