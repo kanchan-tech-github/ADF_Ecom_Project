@@ -46,6 +46,10 @@
 		"Event_Trigger_Blob_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/blob0raw0ecom"
+		},
+		"Schedule_trigger_Rest_properties_PL_Rest_Parquet_parameters_PL_FileName": {
+			"type": "string",
+			"defaultValue": "@triggerBody.fileName"
 		}
 	},
 	"variables": {
@@ -266,13 +270,23 @@
 							{
 								"referenceName": "DS_Rest_Parquet",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"Filename": {
+										"value": "@pipeline().parameters.PL_FileName",
+										"type": "Expression"
+									}
+								}
 							}
 						]
 					}
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"PL_FileName": {
+						"type": "string"
+					}
 				},
 				"annotations": []
 			},
@@ -709,6 +723,11 @@
 					"referenceName": "LS_for_all_Parquet",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"Filename": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "Parquet",
 				"typeProperties": {
@@ -988,14 +1007,16 @@
 			"properties": {
 				"description": "Schedule_trigger_Rest, for Rest resource. It will execute pipeline once in a day.",
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
 							"referenceName": "PL_Rest_Parquet",
 							"type": "PipelineReference"
 						},
-						"parameters": {}
+						"parameters": {
+							"PL_FileName": "[parameters('Schedule_trigger_Rest_properties_PL_Rest_Parquet_parameters_PL_FileName')]"
+						}
 					}
 				],
 				"type": "ScheduleTrigger",
@@ -1004,7 +1025,8 @@
 						"frequency": "Day",
 						"interval": 1,
 						"startTime": "2024-03-16T13:40:00",
-						"timeZone": "India Standard Time"
+						"timeZone": "India Standard Time",
+						"schedule": {}
 					}
 				}
 			},
