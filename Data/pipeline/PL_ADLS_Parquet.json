@@ -59,7 +59,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Filename": {
-								"value": "@replace(pipeline().parameters.PLFileName,'.','.parquet')",
+								"value": "@concat(substring(pipeline().parameters.PLFileName,0,lastindexof(pipeline().parameters.PLFileName,'.')),'.parquet') ",
 								"type": "Expression"
 							}
 						}
