@@ -47,10 +47,6 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/blob0raw0ecom"
 		},
-		"Schedule_trigger_Rest_properties_PL_Rest_Parquet_parameters_PL_FileName": {
-			"type": "string",
-			"defaultValue": "@triggerBody.fileName"
-		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -125,9 +121,6 @@
 					},
 					"Event_Trigger_Blob_properties_typeProperties_scope": {
 						"value": "[parameters('Event_Trigger_Blob_properties_typeProperties_scope')]"
-					},
-					"Schedule_trigger_Rest_properties_PL_Rest_Parquet_parameters_PL_FileName": {
-						"value": "[parameters('Schedule_trigger_Rest_properties_PL_Rest_Parquet_parameters_PL_FileName')]"
 					}
 				}
 			},

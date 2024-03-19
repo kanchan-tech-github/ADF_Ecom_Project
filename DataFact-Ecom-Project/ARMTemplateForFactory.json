@@ -46,10 +46,6 @@
 		"Event_Trigger_Blob_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/1a6b65b6-cbb5-4449-81dc-4dff7aec4452/resourceGroups/rg_ADF_Ecom_Project/providers/Microsoft.Storage/storageAccounts/blob0raw0ecom"
-		},
-		"Schedule_trigger_Rest_properties_PL_Rest_Parquet_parameters_PL_FileName": {
-			"type": "string",
-			"defaultValue": "@triggerBody.fileName"
 		}
 	},
 	"variables": {
@@ -270,23 +266,13 @@
 							{
 								"referenceName": "DS_Rest_Parquet",
 								"type": "DatasetReference",
-								"parameters": {
-									"Filename": {
-										"value": "@pipeline().parameters.PL_FileName",
-										"type": "Expression"
-									}
-								}
+								"parameters": {}
 							}
 						]
 					}
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
-				},
-				"parameters": {
-					"PL_FileName": {
-						"type": "string"
-					}
 				},
 				"annotations": []
 			},
@@ -723,16 +709,12 @@
 					"referenceName": "LS_for_all_Parquet",
 					"type": "LinkedServiceReference"
 				},
-				"parameters": {
-					"Filename": {
-						"type": "string"
-					}
-				},
 				"annotations": [],
 				"type": "Parquet",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": "customer.parquet",
 						"fileSystem": "customer"
 					},
 					"compressionCodec": "snappy"
@@ -1014,9 +996,7 @@
 							"referenceName": "PL_Rest_Parquet",
 							"type": "PipelineReference"
 						},
-						"parameters": {
-							"PL_FileName": "[parameters('Schedule_trigger_Rest_properties_PL_Rest_Parquet_parameters_PL_FileName')]"
-						}
+						"parameters": {}
 					}
 				],
 				"type": "ScheduleTrigger",
