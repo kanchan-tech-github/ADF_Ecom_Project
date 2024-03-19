@@ -116,7 +116,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"Filename": {
-										"value": "@{concat(substring(pipeline().parameters.PLFileName,0,lastIndexOf(pipeline().parameters.PLFileName,'.')),'.parquet')}",
+										"value": "@replace(pipeline().parameters.PLFileName,'.','.parquet')",
 										"type": "Expression"
 									}
 								}
