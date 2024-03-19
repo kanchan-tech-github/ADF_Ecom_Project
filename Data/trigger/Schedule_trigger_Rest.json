@@ -3,7 +3,7 @@
 	"properties": {
 		"description": "Schedule_trigger_Rest, for Rest resource. It will execute pipeline once in a day.",
 		"annotations": [],
-		"runtimeState": "Started",
+		"runtimeState": "Stopped",
 		"pipelines": [
 			{
 				"pipelineReference": {
@@ -11,7 +11,7 @@
 					"type": "PipelineReference"
 				},
 				"parameters": {
-					"PL_FileName": "@triggerBody.fileName"
+					"PL_FileName": "@triggerBody().fileName"
 				}
 			}
 		],
