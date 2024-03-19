@@ -9,6 +9,9 @@
 				"pipelineReference": {
 					"referenceName": "PL_Rest_Parquet",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"PL_FileName": "@triggerBody.fileName"
 				}
 			}
 		],
