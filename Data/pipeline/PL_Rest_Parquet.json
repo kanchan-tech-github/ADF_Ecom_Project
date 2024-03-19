@@ -45,22 +45,11 @@
 				"outputs": [
 					{
 						"referenceName": "DS_Rest_Parquet",
-						"type": "DatasetReference",
-						"parameters": {
-							"Filename": {
-								"value": "@pipeline().parameters.PL_FileName",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				]
 			}
 		],
-		"parameters": {
-			"PL_FileName": {
-				"type": "string"
-			}
-		},
 		"annotations": []
 	}
 }
