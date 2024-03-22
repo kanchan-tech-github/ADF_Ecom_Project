@@ -989,7 +989,7 @@
 			"properties": {
 				"description": "Schedule_trigger_Rest, for Rest resource. It will execute pipeline once in a day.",
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -1004,7 +1004,7 @@
 					"recurrence": {
 						"frequency": "Day",
 						"interval": 1,
-						"startTime": "2024-03-16T13:40:00",
+						"startTime": "2024-03-16T13:00:00",
 						"timeZone": "India Standard Time",
 						"schedule": {}
 					}
@@ -1043,8 +1043,9 @@
 					"recurrence": {
 						"frequency": "Day",
 						"interval": 1,
-						"startTime": "2024-03-16T14:07:00",
-						"timeZone": "India Standard Time"
+						"startTime": "2024-03-16T13:00:00",
+						"timeZone": "India Standard Time",
+						"schedule": {}
 					}
 				}
 			},
